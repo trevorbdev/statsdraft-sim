@@ -82,10 +82,10 @@ const SimulatedGame = () => {
         if (scoringFunction) {
           const statScore = scoringFunction(gameStats, statData.stats_more, statData.points);
           points += statScore;
-          statScores[statData.stat] = statScore;
+          statScores[statData.stat + " " + statData.stats_more] = statScore;
         } else {
           console.warn(`No scoring function found for stat: ${statData.stat}`);
-          statScores[statData.stat] = 0;
+          statScores[statData.stat + " " + statData.stats_more] = 0;
         }
       }
     }
@@ -246,18 +246,28 @@ const SimulatedGame = () => {
           }}>
             <h2>Your Score Explanation</h2>
             <ul style={{ listStyleType: 'none', padding: 0 }}>
-              {Object.entries(userStatScores).map(([stat, score]) => (
-                <li key={stat} style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  marginBottom: '10px',
-                  padding: '5px',
-                  borderRadius: '5px',
-                }}>
-                  <span>{stat}</span>
-                  <span>{score} pts</span>
-                </li>
-              ))}
+              
+{Object.entries(userStatScores).map(([stat, score]) => {
+  // Extract the last character of the stat as a number (boolean-like value)
+  const booleanValue = parseInt(stat.slice(-1), 10);
+  // Remove the last character from the stat to display only the stat text
+  const statText = stat.slice(0, -2);
+
+  return (
+    <li key={stat} style={{
+      display: 'flex',
+      justifyContent: 'space-between',
+      marginBottom: '10px',
+      padding: '5px',
+      borderRadius: '5px',
+      color: booleanValue === 1 ? 'green' : 'red',  // Set color based on boolean value
+    }}>
+      <span>{statText}</span>
+      <span>{score} pts</span>
+    </li>
+  );
+})}
+
             </ul>
             <button 
               onClick={toggleModal}
