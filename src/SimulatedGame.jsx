@@ -135,7 +135,6 @@ const SimulatedGame = () => {
       flexDirection: 'column',
       minHeight: '100vh',
       width: '100%',
-      maxWidth: '800px',
       margin: '0 auto',
       boxSizing: 'border-box',
       backgroundColor: '#f0f0f0',

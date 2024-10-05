@@ -140,7 +140,6 @@ const StatsSelection = () => {
       <div style={{padding: '20px'}}>
       <div style={{
         width: '100%',
-        maxWidth: '400px',
         marginBottom: '20px',
         alignSelf: 'center',
       }}>
@@ -199,7 +198,6 @@ const StatsSelection = () => {
       
       <hr style={{
         width: '100%',
-        maxWidth: '300px',
         height: '1px',
         backgroundColor: '#000',
         border: 'none',
