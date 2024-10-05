@@ -29,6 +29,7 @@ const SimulatedGame = () => {
   const [userStatScores, setUserStatScores] = useState({});
   const [error, setError] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpenFinal, setIsModalOpenFinal] = useState(false);
 
   useEffect(() => {
     const getGameStats = () => {
@@ -111,6 +112,9 @@ const SimulatedGame = () => {
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
+  const toggleModalFinal = () => {
+    setIsModalOpenFinal(!isModalOpenFinal);
+  };
 
   if (error) {
     return <div>Error: {error}</div>;
@@ -154,10 +158,26 @@ const SimulatedGame = () => {
               color: 'white',
               border: 'none',
               borderRadius: '5px',
+              marginRight: '5px',
               cursor: 'pointer',
             }}
           >
             Explain my Score
+          </button>
+          <button 
+            onClick={toggleModalFinal}
+            style={{
+              padding: '10px',
+              fontSize: '14px',
+              fontWeight: 'bold',
+              backgroundColor: '#2196F3',
+              color: 'white',
+              border: 'none',
+              borderRadius: '5px',
+              cursor: 'pointer',
+            }}
+          >
+            Final Team Scores
           </button>
         </div>
 
@@ -247,30 +267,75 @@ const SimulatedGame = () => {
             <h2>Your Score Explanation</h2>
             <ul style={{ listStyleType: 'none', padding: 0 }}>
               
-{Object.entries(userStatScores).map(([stat, score]) => {
-  // Extract the last character of the stat as a number (boolean-like value)
-  const booleanValue = parseInt(stat.slice(-1), 10);
-  // Remove the last character from the stat to display only the stat text
-  const statText = stat.slice(0, -2);
+            {Object.entries(userStatScores).map(([stat, score]) => {
+              // Extract the last character of the stat as a number (boolean-like value)
+              const booleanValue = parseInt(stat.slice(-1), 10);
+              // Remove the last character from the stat to display only the stat text
+              const statText = stat.slice(0, -2);
 
-  return (
-    <li key={stat} style={{
-      display: 'flex',
-      justifyContent: 'space-between',
-      marginBottom: '10px',
-      padding: '5px',
-      borderRadius: '5px',
-      color: booleanValue === 1 ? 'green' : 'red',  // Set color based on boolean value
-    }}>
-      <span>{statText}</span>
-      <span>{score} pts</span>
-    </li>
-  );
-})}
+              return (
+                <li key={stat} style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  marginBottom: '10px',
+                  padding: '5px',
+                  borderRadius: '5px',
+                  color: booleanValue === 1 ? 'green' : 'red',  // Set color based on boolean value
+                }}>
+                  <span>{statText}</span>
+                  <span>{score} pts</span>
+                </li>
+              );
+            })}
 
             </ul>
             <button 
               onClick={toggleModal}
+              style={{
+                padding: '10px',
+                fontSize: '14px',
+                fontWeight: 'bold',
+                backgroundColor: '#2196F3',
+                color: 'white',
+                border: 'none',
+                borderRadius: '5px',
+                cursor: 'pointer',
+                marginTop: '10px',
+              }}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+{isModalOpenFinal && (
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+          <div style={{
+            backgroundColor: 'white',
+            padding: '20px',
+            borderRadius: '5px',
+            maxWidth: '80%',
+            maxHeight: '80%',
+            overflowY: 'auto',
+          }}>
+            <h2>Final Game Score!</h2>
+            <ul style={{ listStyleType: 'none', padding: 0 }}>
+              
+            <li>Scores</li>
+
+            </ul>
+            <button 
+              onClick={toggleModalFinal}
               style={{
                 padding: '10px',
                 fontSize: '14px',
