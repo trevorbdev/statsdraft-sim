@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
-import SimulatedGame from './SimulatedGame';
+import StatsSelection from './StatsSelection';
 
 const matchups = [
   "2019 Chiefs vs 2023 Chiefs",
@@ -19,7 +19,7 @@ const AppContent = () => {
 
   const handlePlayClick = () => {
     if (selectedMatchup !== null) {
-      navigate('/playing_game', { state: { matchup: matchups[selectedMatchup] } });
+      navigate('/picking_stats', { state: { matchup: matchups[selectedMatchup] } });
     }
   };
 
@@ -104,7 +104,7 @@ const AppContent = () => {
             transition: 'all 0.3s ease',
           }}
         >
-          Let's Play!
+          Start
         </button>
       </div>
     </div>
@@ -116,7 +116,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<AppContent />} />
-        <Route path="/playing_game" element={<SimulatedGame />} />
+        <Route path="/picking_stats" element={<StatsSelection />} />
       </Routes>
     </Router>
   );
