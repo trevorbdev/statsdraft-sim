@@ -349,7 +349,7 @@ const SimulatedGame = () => {
       maxHeight: '80%',
       overflowY: 'auto',
     }}>
-      <h2>Final Game Score!</h2>
+      <h2 style={{color: '#000000'}}>Final Game Score!</h2>
       <ul style={{ listStyleType: 'none', padding: 0 , color:'#000000' }}>
         <li style={{color:'#000000'}}>{gameStats.game.teams[0].team_name} score: {gameStats.game.teams[0].score}</li>
         <li style={{color:'#000000'}}>{gameStats.game.teams[1].team_name} score: {gameStats.game.teams[1].score}</li>
