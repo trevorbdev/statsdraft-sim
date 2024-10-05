@@ -48,6 +48,33 @@ const StatsSelection = () => {
     setIsEditMode(!isEditMode);
   };
 
+  const generateAISelections = () => {
+    const aiSelections = {};
+    for (let i = 1; i <= 6; i++) {
+      aiSelections[`AI${i}`] = {
+        "Teams Playing": matchup,
+        "Stats Selected": {}
+      };
+      
+      const selectedStats = new Set();
+      for (let j = 1; j <= 5; j++) {
+        let randomStatIndex;
+        do {
+          randomStatIndex = Math.floor(Math.random() * statCategories.length);
+        } while (selectedStats.has(randomStatIndex));
+        
+        selectedStats.add(randomStatIndex);
+        
+        aiSelections[`AI${i}`]["Stats Selected"][j] = {
+          "stat": statCategories[randomStatIndex],
+          "stats_more": Math.random() < 0.5 ? 1 : 0,
+          "points": 8 - (j - 1)
+        };
+      }
+    }
+    return aiSelections;
+  };
+
   const handlePlayClick = () => {
     const statsData = {
       "Teams Playing": matchup,
@@ -59,12 +86,14 @@ const StatsSelection = () => {
         statsData["Stats Selected"][index + 1] = {
           "stat": statCategories[Math.floor(statIndex / 2)],
           "stats_more": statIndex % 2 === 0 ? 1 : 0,
-          "points": 8 - index // Assigns 5 points to the first stat, 4 to the second, and so on
+          "points": 8 - index
         };
       }
     });
 
-    navigate('/simulated_game', { state: statsData });
+    const aiSelections = generateAISelections();
+    
+    navigate('/simulated_game', { state: { human: statsData, ...aiSelections } });
   };
 
   const iconStyle = {
@@ -124,38 +153,38 @@ const StatsSelection = () => {
           {matchup || 'No matchup selected'}
         </h2>
         {selectedStats.map((statIndex, index) => (
-  <div 
-    key={index} 
-    style={{
-      border: '1px solid #ccc',
-      borderRadius: '10px',
-      padding: '10px',
-      marginBottom: '10px',
-      backgroundColor: statIndex !== null ? (statIndex % 2 === 0 ? '#e8f5e9' : '#ffebee') : 'white',
-      color: statIndex !== null ? (statIndex % 2 === 0 ? '#2e7d32' : '#c62828') : 'black',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-    }}
-  >
-    <div>{index + 1}. {statIndex !== null ? statCategories[Math.floor(statIndex / 2)] : '--------'} ({8 - index} pts)</div>
-    {statIndex !== null && (
-      <div style={{ display: 'flex', alignItems: 'center' }}>
-        <span style={iconStyle}>
-          {statIndex % 2 === 0 ? 'trending_up' : 'trending_down'}
-        </span>
-        {isEditMode && (
-          <span 
-            style={{...iconStyle, marginLeft: '10px', cursor: 'pointer'}} 
-            onClick={() => handleDelete(index)}
+          <div 
+            key={index} 
+            style={{
+              border: '1px solid #ccc',
+              borderRadius: '10px',
+              padding: '10px',
+              marginBottom: '10px',
+              backgroundColor: statIndex !== null ? (statIndex % 2 === 0 ? '#e8f5e9' : '#ffebee') : 'white',
+              color: statIndex !== null ? (statIndex % 2 === 0 ? '#2e7d32' : '#c62828') : 'black',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+            }}
           >
-            delete
-          </span>
-        )}
-      </div>
-    )}
-  </div>
-))}
+            <div>{index + 1}. {statIndex !== null ? statCategories[Math.floor(statIndex / 2)] : '--------'} ({8 - index} pts)</div>
+            {statIndex !== null && (
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <span style={iconStyle}>
+                  {statIndex % 2 === 0 ? 'trending_up' : 'trending_down'}
+                </span>
+                {isEditMode && (
+                  <span 
+                    style={{...iconStyle, marginLeft: '10px', cursor: 'pointer'}} 
+                    onClick={() => handleDelete(index)}
+                  >
+                    delete
+                  </span>
+                )}
+              </div>
+            )}
+          </div>
+        ))}
         <button 
           onClick={toggleEditMode}
           style={{
