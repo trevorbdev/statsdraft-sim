@@ -50,31 +50,42 @@ const StatsSelection = () => {
   };
 
   const generateAISelections = () => {
-    const aiSelections = {};
-    for (let i = 1; i <= 6; i++) {
-      aiSelections[`AI${i}`] = {
-        "Teams Playing": matchup,
-        "Stats Selected": {}
-      };
+  const aiSelections = {};
+  
+  const aiNames = [
+    "Agile Innovators",
+    "Apex Invaders",
+    "Astonishing Impact",
+    "Artic Intrepid",
+    "Apex Intellects",
+    "Adventurous Insiders"
+  ];
+
+  aiNames.forEach((aiName) => {
+    aiSelections[aiName] = {
+      "Teams Playing": matchup,
+      "Stats Selected": {}
+    };
+    
+    const selectedStats = new Set();
+    for (let j = 1; j <= 5; j++) {
+      let randomStatIndex;
+      do {
+        randomStatIndex = Math.floor(Math.random() * statCategories.length);
+      } while (selectedStats.has(randomStatIndex));
       
-      const selectedStats = new Set();
-      for (let j = 1; j <= 5; j++) {
-        let randomStatIndex;
-        do {
-          randomStatIndex = Math.floor(Math.random() * statCategories.length);
-        } while (selectedStats.has(randomStatIndex));
-        
-        selectedStats.add(randomStatIndex);
-        
-        aiSelections[`AI${i}`]["Stats Selected"][j] = {
-          "stat": statCategories[randomStatIndex],
-          "stats_more": Math.random() < 0.5 ? 1 : 0,
-          "points": 8 - (j - 1)
-        };
-      }
+      selectedStats.add(randomStatIndex);
+      
+      aiSelections[aiName]["Stats Selected"][j] = {
+        "stat": statCategories[randomStatIndex],
+        "stats_more": Math.random() < 0.5 ? 1 : 0,
+        "points": 8 - (j - 1)
+      };
     }
-    return aiSelections;
-  };
+  });
+
+  return aiSelections;
+};;
 
   const handlePlayClick = () => {
     const statsData = {
