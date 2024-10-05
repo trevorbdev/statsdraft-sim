@@ -73,7 +73,7 @@ const AppContent = () => {
                 textAlign: 'center',
                 fontSize: '16px',
                 boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-                backgroundColor: selectedMatchup === index ? '#3498db' : 'white',
+                backgroundColor: selectedMatchup === index ? '#161635' : 'white',
                 color: selectedMatchup === index ? 'white' : 'black',
                 cursor: 'pointer',
                 transition: 'all 0.3s ease',
@@ -93,7 +93,7 @@ const AppContent = () => {
         <button 
           onClick={handlePlayClick}
           style={{
-            backgroundColor: '#2ecc71',
+            backgroundColor: '#136D15',
             color: 'white',
             border: 'none',
             borderRadius: '25px',
