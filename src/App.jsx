@@ -1,35 +1,63 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
 
-function App() {
-  const [count, setCount] = useState(0)
+const matchups = [
+  "2019 Chiefs vs 2023 Chiefs",
+  "1968 KU vs 1995 KU",
+  "2018 Chiefs vs 2015 Patriots",
+  "1998 KState vs 2008 KU"
+];
 
+const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div style={{
+      fontFamily: 'Arial, sans-serif',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      minHeight: '100vh',
+      width: '100%',
+      maxWidth: '768px',
+      margin: '0 auto',
+      padding: '20px',
+      boxSizing: 'border-box',
+    }}>
+      <h1 style={{
+        fontSize: '24px',
+        fontWeight: 'bold',
+        marginTop: '0',
+        marginBottom: '10px',
+        textAlign: 'center',
+      }}>
+        StatsDraft
+      </h1>
+      <hr style={{
+        width: '100%',
+        maxWidth: '300px',
+        height: '1px',
+        backgroundColor: '#ccc',
+        border: 'none',
+        margin: '0 0 20px 0',
+      }} />
+      <div style={{
+        width: '100%',
+        maxWidth: '300px',
+      }}>
+        {matchups.map((matchup, index) => (
+          <div key={index} style={{
+            border: '1px solid #ccc',
+            borderRadius: '20px',
+            padding: '10px 15px',
+            marginBottom: '10px',
+            textAlign: 'center',
+            fontSize: '14px',
+            boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+          }}>
+            {matchup}
+          </div>
+        ))}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    </div>
+  );
+};
 
-export default App
+export default App;
