@@ -59,7 +59,7 @@ const StatsSelection = () => {
         statsData["Stats Selected"][index + 1] = {
           "stat": statCategories[Math.floor(statIndex / 2)],
           "stats_more": statIndex % 2 === 0 ? 1 : 0,
-          "points": 5 - index // Assigns 5 points to the first stat, 4 to the second, and so on
+          "points": 8 - index // Assigns 5 points to the first stat, 4 to the second, and so on
         };
       }
     });
@@ -124,38 +124,38 @@ const StatsSelection = () => {
           {matchup || 'No matchup selected'}
         </h2>
         {selectedStats.map((statIndex, index) => (
-          <div 
-            key={index} 
-            style={{
-              border: '1px solid #ccc',
-              borderRadius: '10px',
-              padding: '10px',
-              marginBottom: '10px',
-              backgroundColor: statIndex !== null ? (statIndex % 2 === 0 ? '#e8f5e9' : '#ffebee') : 'white',
-              color: statIndex !== null ? (statIndex % 2 === 0 ? '#2e7d32' : '#c62828') : 'black',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-            }}
+  <div 
+    key={index} 
+    style={{
+      border: '1px solid #ccc',
+      borderRadius: '10px',
+      padding: '10px',
+      marginBottom: '10px',
+      backgroundColor: statIndex !== null ? (statIndex % 2 === 0 ? '#e8f5e9' : '#ffebee') : 'white',
+      color: statIndex !== null ? (statIndex % 2 === 0 ? '#2e7d32' : '#c62828') : 'black',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+    }}
+  >
+    <div>{index + 1}. {statIndex !== null ? statCategories[Math.floor(statIndex / 2)] : '--------'} ({8 - index} pts)</div>
+    {statIndex !== null && (
+      <div style={{ display: 'flex', alignItems: 'center' }}>
+        <span style={iconStyle}>
+          {statIndex % 2 === 0 ? 'trending_up' : 'trending_down'}
+        </span>
+        {isEditMode && (
+          <span 
+            style={{...iconStyle, marginLeft: '10px', cursor: 'pointer'}} 
+            onClick={() => handleDelete(index)}
           >
-            <div>{index + 1}. {statIndex !== null ? statCategories[Math.floor(statIndex / 2)] : '--------'} ({5 - index} pts)</div>
-            {statIndex !== null && (
-              <div style={{ display: 'flex', alignItems: 'center' }}>
-                <span style={iconStyle}>
-                  {statIndex % 2 === 0 ? 'trending_up' : 'trending_down'}
-                </span>
-                {isEditMode && (
-                  <span 
-                    style={{...iconStyle, marginLeft: '10px', cursor: 'pointer'}} 
-                    onClick={() => handleDelete(index)}
-                  >
-                    delete
-                  </span>
-                )}
-              </div>
-            )}
-          </div>
-        ))}
+            delete
+          </span>
+        )}
+      </div>
+    )}
+  </div>
+))}
         <button 
           onClick={toggleEditMode}
           style={{
