@@ -308,51 +308,54 @@ const SimulatedGame = () => {
           </div>
         </div>
       )}
-{isModalOpenFinal && (
-        <div style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: 'rgba(0, 0, 0, 0.5)',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}>
-          <div style={{
-            backgroundColor: 'white',
-            padding: '20px',
-            borderRadius: '5px',
-            maxWidth: '80%',
-            maxHeight: '80%',
-            overflowY: 'auto',
-          }}>
-            <h2>Final Game Score!</h2>
-            <ul style={{ listStyleType: 'none', padding: 0 }}>
-              
-            <li>Scores</li>
 
-            </ul>
-            <button 
-              onClick={toggleModalFinal}
-              style={{
-                padding: '10px',
-                fontSize: '14px',
-                fontWeight: 'bold',
-                backgroundColor: '#2196F3',
-                color: 'white',
-                border: 'none',
-                borderRadius: '5px',
-                cursor: 'pointer',
-                marginTop: '10px',
-              }}
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
+
+{isModalOpenFinal && (
+  <div style={{
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  }}>
+    <div style={{
+      backgroundColor: 'white',
+      padding: '20px',
+      borderRadius: '5px',
+      maxWidth: '80%',
+      maxHeight: '80%',
+      overflowY: 'auto',
+    }}>
+      <h2>Final Game Score!</h2>
+      <ul style={{ listStyleType: 'none', padding: 0 }}>
+        <li>{gameStats.game.teams[0].team_name} score: {gameStats.game.teams[0].score}</li>
+        <li>{gameStats.game.teams[1].team_name} score: {gameStats.game.teams[1].score}</li>
+      </ul>
+      <button 
+        onClick={toggleModalFinal}
+        style={{
+          padding: '10px',
+          fontSize: '14px',
+          fontWeight: 'bold',
+          backgroundColor: '#2196F3',
+          color: 'white',
+          border: 'none',
+          borderRadius: '5px',
+          cursor: 'pointer',
+          marginTop: '10px',
+        }}
+      >
+        Close
+      </button>
+    </div>
+  </div>
+)}
+
+
     </div>
   );
 };
