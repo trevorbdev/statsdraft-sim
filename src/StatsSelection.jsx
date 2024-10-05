@@ -267,7 +267,7 @@ const StatsSelection = () => {
             padding: '15px 30px',
             fontSize: '18px',
             fontWeight: 'bold',
-            backgroundColor: '#4CAF50',
+            backgroundColor: 'rgb(19, 109, 21)',
             color: 'white',
             border: 'none',
             borderRadius: '5px',

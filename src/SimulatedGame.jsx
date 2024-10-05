@@ -194,7 +194,7 @@ const SimulatedGame = () => {
               padding: '10px',
               fontSize: '16px',
               fontWeight: 'bold',
-              backgroundColor: '#4CAF50',
+              backgroundColor: 'rgb(19, 109, 21)',
               color: 'white',
               border: 'none',
               borderRadius: '5px',
