@@ -87,6 +87,7 @@ const AppContent = () => {
             cursor: 'pointer',
             boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
             transition: 'all 0.3s ease',
+            marginBottom: '10px'
           }}
         >
           Start

@@ -4,7 +4,7 @@ const AppBar = () => {
       style={{
         margin: "0 auto",
         width: "100%",
-        height: "7vh",
+        height: "8vh",
         backgroundColor: "#161635",
         marginBottom: "12px",
         textAlign: "center",
@@ -14,7 +14,7 @@ const AppBar = () => {
         src="../src/assets/statsdraftlogo.png"
         width="50"
         height="50"
-        style={{ marginTop: "0.5vh" }}
+        style={{ marginTop: "1vh" }}
       />
     </div>
   );

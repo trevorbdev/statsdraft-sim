@@ -209,7 +209,7 @@ const StatsSelection = () => {
       
       <div style={{
         width: '100%',
-        maxWidth: '400px',
+        maxHeight: '40vh',
         overflowY: 'auto',
         flexGrow: 1,
         alignSelf: 'center',
@@ -228,7 +228,7 @@ const StatsSelection = () => {
               opacity: selectedStats.includes(index * 2) ? 0.5 : 1,
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'space-between',
+              justifyContent: 'space-between'
             }}
           >
             <div>{index * 2 + 1}. {category}</div>
