@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
+import SimulatedGame from './SimulatedGame';
 
 const matchups = [
   "2019 Chiefs vs 2023 Chiefs",
@@ -7,56 +9,116 @@ const matchups = [
   "1998 KState vs 2008 KU"
 ];
 
-const App = () => {
+const AppContent = () => {
+  const [selectedMatchup, setSelectedMatchup] = useState(null);
+  const navigate = useNavigate();
+
+  const handleMatchupClick = (index) => {
+    setSelectedMatchup(index === selectedMatchup ? null : index);
+  };
+
+  const handlePlayClick = () => {
+    if (selectedMatchup !== null) {
+      navigate('/playing_game', { state: { matchup: matchups[selectedMatchup] } });
+    }
+  };
+
   return (
     <div style={{
       fontFamily: 'Arial, sans-serif',
       display: 'flex',
       flexDirection: 'column',
-      alignItems: 'center',
+      justifyContent: 'space-between',
       minHeight: '100vh',
       width: '100%',
-      maxWidth: '768px',
+      maxWidth: '100%',
       margin: '0 auto',
       padding: '20px',
       boxSizing: 'border-box',
+      backgroundColor: '#f0f0f0',
     }}>
-      <h1 style={{
-        fontSize: '24px',
-        fontWeight: 'bold',
-        marginTop: '0',
-        marginBottom: '10px',
-        textAlign: 'center',
-      }}>
-        StatsDraft
-      </h1>
-      <hr style={{
-        width: '100%',
-        maxWidth: '300px',
-        height: '1px',
-        backgroundColor: '#ccc',
-        border: 'none',
-        margin: '0 0 20px 0',
-      }} />
+      <div>
+        <h1 style={{
+          fontSize: '24px',
+          fontWeight: 'bold',
+          marginTop: '0',
+          marginBottom: '10px',
+          textAlign: 'center',
+        }}>
+          StatsDraft
+        </h1>
+        <hr style={{
+          width: '100%',
+          maxWidth: '300px',
+          height: '1px',
+          backgroundColor: '#ccc',
+          border: 'none',
+          margin: '0 auto 20px',
+        }} />
+        <div style={{
+          width: '100%',
+          maxWidth: '400px',
+          margin: '0 auto',
+        }}>
+          {matchups.map((matchup, index) => (
+            <div 
+              key={index} 
+              onClick={() => handleMatchupClick(index)}
+              style={{
+                border: '1px solid #ccc',
+                borderRadius: '25px',
+                padding: '15px 20px',
+                marginBottom: '15px',
+                textAlign: 'center',
+                fontSize: '16px',
+                boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                backgroundColor: selectedMatchup === index ? '#3498db' : 'white',
+                color: selectedMatchup === index ? 'white' : 'black',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+              }}
+            >
+              {matchup}
+            </div>
+          ))}
+        </div>
+      </div>
       <div style={{
         width: '100%',
-        maxWidth: '300px',
+        display: 'flex',
+        justifyContent: 'center',
+        marginTop: '20px',
       }}>
-        {matchups.map((matchup, index) => (
-          <div key={index} style={{
-            border: '1px solid #ccc',
-            borderRadius: '20px',
-            padding: '10px 15px',
-            marginBottom: '10px',
-            textAlign: 'center',
-            fontSize: '14px',
+        <button 
+          onClick={handlePlayClick}
+          style={{
+            backgroundColor: '#2ecc71',
+            color: 'white',
+            border: 'none',
+            borderRadius: '25px',
+            padding: '15px 30px',
+            fontSize: '18px',
+            fontWeight: 'bold',
+            cursor: 'pointer',
             boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-          }}>
-            {matchup}
-          </div>
-        ))}
+            transition: 'all 0.3s ease',
+          }}
+        >
+          Let's Play!
+        </button>
       </div>
     </div>
+  );
+};
+
+const App = () => {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<AppContent />} />
+        <Route path="/playing_game" element={<SimulatedGame />} />
+      </Routes>
+    </Router>
   );
 };
 
