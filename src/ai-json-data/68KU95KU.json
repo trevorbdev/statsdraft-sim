@@ -1,0 +1,67 @@
+{
+    "game": {
+      "teams": [
+        {
+          "team_name": "1968 Kansas Jayhawks",
+          "offense": {
+            "total_yards": 380,
+            "passing_yards": 180,
+            "rushing_yards": 200,
+            "third_down_efficiency": "5/11",
+            "fourth_down_efficiency": "1/1",
+            "turnovers": 2
+          },
+          "defense": {
+            "sacks": 2,
+            "interceptions": 1,
+            "fumbles_forced": 1,
+            "total_tackles": 70
+          },
+          "special_teams": {
+            "field_goals_made": 2,
+            "field_goals_attempted": 3,
+            "punts": 5,
+            "punt_return_yards": 30,
+            "kickoff_return_yards": 70
+          },
+          "time_of_possession": "32:00",
+          "penalties": {
+            "count": 7,
+            "yards": 60
+          },
+          "score": 20
+        },
+        {
+          "team_name": "1995 Kansas Jayhawks",
+          "offense": {
+            "total_yards": 400,
+            "passing_yards": 220,
+            "rushing_yards": 180,
+            "third_down_efficiency": "8/14",
+            "fourth_down_efficiency": "0/1",
+            "turnovers": 1
+          },
+          "defense": {
+            "sacks": 3,
+            "interceptions": 2,
+            "fumbles_forced": 0,
+            "total_tackles": 65
+          },
+          "special_teams": {
+            "field_goals_made": 3,
+            "field_goals_attempted": 3,
+            "punts": 4,
+            "punt_return_yards": 40,
+            "kickoff_return_yards": 85
+          },
+          "time_of_possession": "28:00",
+          "penalties": {
+            "count": 5,
+            "yards": 45
+          },
+          "score": 23
+        }
+      ]
+    }
+  }
+  

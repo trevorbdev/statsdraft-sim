@@ -1,0 +1,67 @@
+{
+    "game": {
+      "teams": [
+        {
+          "team_name": "2018 Kansas City Chiefs",
+          "offense": {
+            "total_yards": 460,
+            "passing_yards": 350,
+            "rushing_yards": 110,
+            "third_down_efficiency": "6/10",
+            "fourth_down_efficiency": "1/2",
+            "turnovers": 1
+          },
+          "defense": {
+            "sacks": 2,
+            "interceptions": 0,
+            "fumbles_forced": 1,
+            "total_tackles": 58
+          },
+          "special_teams": {
+            "field_goals_made": 2,
+            "field_goals_attempted": 3,
+            "punts": 3,
+            "punt_return_yards": 20,
+            "kickoff_return_yards": 75
+          },
+          "time_of_possession": "28:30",
+          "penalties": {
+            "count": 6,
+            "yards": 55
+          },
+          "score": 28
+        },
+        {
+          "team_name": "2015 New England Patriots",
+          "offense": {
+            "total_yards": 430,
+            "passing_yards": 320,
+            "rushing_yards": 110,
+            "third_down_efficiency": "8/13",
+            "fourth_down_efficiency": "0/1",
+            "turnovers": 0
+          },
+          "defense": {
+            "sacks": 3,
+            "interceptions": 1,
+            "fumbles_forced": 0,
+            "total_tackles": 64
+          },
+          "special_teams": {
+            "field_goals_made": 3,
+            "field_goals_attempted": 3,
+            "punts": 2,
+            "punt_return_yards": 25,
+            "kickoff_return_yards": 80
+          },
+          "time_of_possession": "31:30",
+          "penalties": {
+            "count": 4,
+            "yards": 40
+          },
+          "score": 27
+        }
+      ]
+    }
+  }
+  

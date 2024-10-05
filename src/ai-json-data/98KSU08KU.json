@@ -1,0 +1,67 @@
+{
+    "game": {
+      "teams": [
+        {
+          "team_name": "1998 Kansas State Wildcats",
+          "offense": {
+            "total_yards": 470,
+            "passing_yards": 250,
+            "rushing_yards": 220,
+            "third_down_efficiency": "7/12",
+            "fourth_down_efficiency": "1/1",
+            "turnovers": 0
+          },
+          "defense": {
+            "sacks": 4,
+            "interceptions": 2,
+            "fumbles_forced": 1,
+            "total_tackles": 72
+          },
+          "special_teams": {
+            "field_goals_made": 3,
+            "field_goals_attempted": 3,
+            "punts": 3,
+            "punt_return_yards": 50,
+            "kickoff_return_yards": 90
+          },
+          "time_of_possession": "33:45",
+          "penalties": {
+            "count": 6,
+            "yards": 55
+          },
+          "score": 30
+        },
+        {
+          "team_name": "2008 Kansas Jayhawks",
+          "offense": {
+            "total_yards": 400,
+            "passing_yards": 320,
+            "rushing_yards": 80,
+            "third_down_efficiency": "5/13",
+            "fourth_down_efficiency": "1/2",
+            "turnovers": 2
+          },
+          "defense": {
+            "sacks": 2,
+            "interceptions": 1,
+            "fumbles_forced": 0,
+            "total_tackles": 65
+          },
+          "special_teams": {
+            "field_goals_made": 2,
+            "field_goals_attempted": 2,
+            "punts": 4,
+            "punt_return_yards": 40,
+            "kickoff_return_yards": 75
+          },
+          "time_of_possession": "26:15",
+          "penalties": {
+            "count": 7,
+            "yards": 65
+          },
+          "score": 20
+        }
+      ]
+    }
+  }
+  
