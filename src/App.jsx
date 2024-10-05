@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
 import StatsSelection from './StatsSelection';
+import SimulatedGame from './SimulatedGame';
 
 const matchups = [
   "2019 Chiefs vs 2023 Chiefs",
@@ -117,6 +118,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<AppContent />} />
         <Route path="/picking_stats" element={<StatsSelection />} />
+        <Route path="/simulated_game" element={<SimulatedGame />} />
       </Routes>
     </Router>
   );

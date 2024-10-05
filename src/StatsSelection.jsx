@@ -1,13 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const StatsSelection = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const { matchup } = location.state || {};
 
   const statCategories = [
-    '1st Down', '2 PT Conversion', '20+ Yard Passes',
-    '3rd Down %', '40+ Yard Passes'
+    'Total Yards',
+    'Passing Yards',
+    'Rushing Yards',
+    '3rd Down Efficiency',
+    'Turnovers',
+    'Sacks',
+    'Field Goals Made',
+    'Punts',
+    'Time of Possession',
+    'Penalties'
   ];
 
   const [selectedStats, setSelectedStats] = useState(Array(5).fill(null));
@@ -37,6 +46,25 @@ const StatsSelection = () => {
 
   const toggleEditMode = () => {
     setIsEditMode(!isEditMode);
+  };
+
+  const handlePlayClick = () => {
+    const statsData = {
+      "Teams Playing": matchup,
+      "Stats Selected": {}
+    };
+    
+    selectedStats.forEach((statIndex, index) => {
+      if (statIndex !== null) {
+        statsData["Stats Selected"][index + 1] = {
+          "stat": statCategories[Math.floor(statIndex / 2)],
+          "stats_more": statIndex % 2 === 0 ? 1 : 0,
+          "points": 5 - index // Assigns 5 points to the first stat, 4 to the second, and so on
+        };
+      }
+    });
+
+    navigate('/simulated_game', { state: statsData });
   };
 
   const iconStyle = {
@@ -110,7 +138,7 @@ const StatsSelection = () => {
               justifyContent: 'space-between',
             }}
           >
-            <div>{index + 1}. {statIndex !== null ? statCategories[Math.floor(statIndex / 2)] : '--------'}</div>
+            <div>{index + 1}. {statIndex !== null ? statCategories[Math.floor(statIndex / 2)] : '--------'} ({5 - index} pts)</div>
             {statIndex !== null && (
               <div style={{ display: 'flex', alignItems: 'center' }}>
                 <span style={iconStyle}>
@@ -204,8 +232,9 @@ const StatsSelection = () => {
         ])}
       </div>
       
-      {allStatsSelected && (
+      {allStatsSelected && !isEditMode && (
         <button 
+          onClick={handlePlayClick}
           style={{
             position: 'fixed',
             bottom: '20px',
