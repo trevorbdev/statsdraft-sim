@@ -5,6 +5,7 @@ import Chiefs19vs23 from './ai-json-data/19Chiefs23Chiefs.json';
 import KU68vs95 from './ai-json-data/68KU95KU.json';
 import Chiefs18vsPatriots15 from './ai-json-data/18Chiefs15Patriots.json';
 import KSU98vsKU08 from './ai-json-data/98KSU08KU.json';
+import AppBar from './AppBar';
 // Import all the scoring functions
 import {
   totalYardsScoring,
@@ -118,28 +119,11 @@ const SimulatedGame = () => {
       width: '100%',
       maxWidth: '800px',
       margin: '0 auto',
-      padding: '20px',
       boxSizing: 'border-box',
       backgroundColor: '#f0f0f0',
     }}>
-      <h1 style={{
-        fontSize: '24px',
-        fontWeight: 'bold',
-        marginTop: '0',
-        marginBottom: '10px',
-        textAlign: 'center',
-      }}>
-        StatsDraft
-      </h1>
-      <hr style={{
-        width: '100%',
-        maxWidth: '300px',
-        height: '1px',
-        backgroundColor: '#000',
-        border: 'none',
-        margin: '0 auto 20px',
-      }} />
-      
+      <AppBar/>
+      <div style={{padding: '20px'}}>
       <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>
         {allPlayersData.human["Teams Playing"]}
       </h2>
@@ -197,6 +181,7 @@ const SimulatedGame = () => {
           src="https://static.wixstatic.com/media/7c6199_e3b0e86d110f4962b07ae4f5f9089f58~mv2.png/v1/fill/w_303,h_90,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Apple.png" alt="Apple.png" style={{width:'185px',height:'60px'}} width="185" height="60"
         />
         </div>
+      </div>
       </div>
     </div>
   );

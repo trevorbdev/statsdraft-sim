@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
 import StatsSelection from './StatsSelection';
 import SimulatedGame from './SimulatedGame';
+import AppBar from './AppBar';
 
 const matchups = [
   "2019 Chiefs vs 2023 Chiefs",
@@ -34,28 +35,11 @@ const AppContent = () => {
       width: '100%',
       maxWidth: '100%',
       margin: '0 auto',
-      padding: '20px',
       boxSizing: 'border-box',
       backgroundColor: '#f0f0f0',
     }}>
+      <AppBar/>
       <div>
-        <h1 style={{
-          fontSize: '24px',
-          fontWeight: 'bold',
-          marginTop: '0',
-          marginBottom: '10px',
-          textAlign: 'center',
-        }}>
-          StatsDraft
-        </h1>
-        <hr style={{
-          width: '100%',
-          maxWidth: '300px',
-          height: '1px',
-          backgroundColor: '#ccc',
-          border: 'none',
-          margin: '0 auto 20px',
-        }} />
         <div style={{
           width: '100%',
           maxWidth: '400px',

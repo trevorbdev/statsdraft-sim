@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import AppBar from './AppBar';
 
 const StatsSelection = () => {
   const location = useLocation();
@@ -121,28 +122,11 @@ const StatsSelection = () => {
       width: '100%',
       maxWidth: '100%',
       margin: '0 auto',
-      padding: '20px',
       boxSizing: 'border-box',
       backgroundColor: '#f0f0f0',
     }}>
-      <h1 style={{
-        fontSize: '24px',
-        fontWeight: 'bold',
-        marginTop: '0',
-        marginBottom: '10px',
-        textAlign: 'center',
-      }}>
-        StatsDraft
-      </h1>
-      <hr style={{
-        width: '100%',
-        maxWidth: '300px',
-        height: '1px',
-        backgroundColor: '#000',
-        border: 'none',
-        margin: '0 auto 20px',
-      }} />
-      
+      <AppBar/>
+      <div style={{padding: '20px'}}>
       <div style={{
         width: '100%',
         maxWidth: '400px',
@@ -283,6 +267,7 @@ const StatsSelection = () => {
           Let's Play!
         </button>
       )}
+    </div>
     </div>
   );
 };
