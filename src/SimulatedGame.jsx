@@ -20,6 +20,22 @@ import {
   penaltiesScoring
 } from './scoring_methods/scoring_methods.js';
 
+const gifMapping = {
+  "2019 Chiefs": "../src/assets/2019chiefs.gif",
+  "2023 Chiefs": "../src/assets/23chiefs.gif",
+  "1968 KU": "../src/assets/1968jayhawk.gif",
+  "1995 KU": "../src/assets/95ku.gif",
+  "2018 Chiefs": "../src/assets/18chiefs.gif",
+  "2015 Patriots": "../src/assets/2015pats.gif",
+  "2008 KU": "../src/assets/2008jayhawk.gif",
+  "1998 KState": "../src/assets/wildcat.gif",
+};
+
+const getGifsForTeams = (teamsPlaying) => {
+  const teams = teamsPlaying.split(' vs ');
+  return teams.map(team => gifMapping[team.trim()]).filter(Boolean);
+};
+
 const SimulatedGame = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -30,6 +46,7 @@ const SimulatedGame = () => {
   const [error, setError] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpenFinal, setIsModalOpenFinal] = useState(false);
+  const [getPlayerData, setPlayerData] = useState({});
 
   useEffect(() => {
     const getGameStats = () => {
@@ -61,6 +78,7 @@ const SimulatedGame = () => {
   }, [gameStats]);
 
   const calculatePlayerScore = (playerData) => {
+    setPlayerData(playerData)
     let points = 0;
     const statScores = {};
     const scoringFunctions = {
@@ -335,6 +353,11 @@ const SimulatedGame = () => {
         <li>{gameStats.game.teams[0].team_name} score: {gameStats.game.teams[0].score}</li>
         <li>{gameStats.game.teams[1].team_name} score: {gameStats.game.teams[1].score}</li>
       </ul>
+      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+        {getGifsForTeams(getPlayerData['Teams Playing']).map((gif, index) => (
+          <img key={index} src={gif} alt={gif} style={{ width: '150px', height: 'auto', margin: '0 10px' }} />
+        ))}
+      </div>
       <button 
         onClick={toggleModalFinal}
         style={{
