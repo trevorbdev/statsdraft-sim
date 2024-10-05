@@ -4,9 +4,8 @@ const AppBar = () => {
       style={{
         margin: "0 auto",
         width: "100%",
-        height: "8vh",
+        height: "8.5vh",
         backgroundColor: "#161635",
-        marginBottom: "12px",
         textAlign: "center",
       }}
     >

@@ -129,7 +129,7 @@ const StatsSelection = () => {
       fontFamily: 'Arial, sans-serif',
       display: 'flex',
       flexDirection: 'column',
-      height: '100vh',
+      height: '100%',
       width: '100%',
       maxWidth: '100%',
       margin: '0 auto',
@@ -143,7 +143,7 @@ const StatsSelection = () => {
         marginBottom: '20px',
         alignSelf: 'center',
       }}>
-        <h2 style={{ textAlign: 'center', marginBottom: '10px' }}>
+        <h2 style={{ textAlign: 'center', marginBottom: '10px', color: '#000000' }}>
           {matchup || 'No matchup selected'}
         </h2>
         {selectedStats.map((statIndex, index) => (

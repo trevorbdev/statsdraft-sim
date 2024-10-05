@@ -141,11 +141,11 @@ const SimulatedGame = () => {
     }}>
       <AppBar/>
       <div style={{padding: '20px'}}>
-        <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>
+        <h2 style={{ textAlign: 'center', marginBottom: '20px', color: '#000000' }}>
           {allPlayersData.human["Teams Playing"]}
         </h2>
         
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px', color: '#000000' }}>
           <h3>Final Scores:</h3>
           <button 
             onClick={toggleModal}
@@ -192,6 +192,7 @@ const SimulatedGame = () => {
               backgroundColor: player === 'human' ? '#e8f5e9' : '#f5f5f5',
               borderRadius: '5px',
               display: 'flex',
+              color: '#000000',
               justifyContent: 'space-between',
               alignItems: 'center',
             }}>
@@ -222,7 +223,7 @@ const SimulatedGame = () => {
           >
             Play Again
           </button>
-          <div style={{margin: '0 auto'}}>
+          <div style={{margin: '0 auto', textAlign: 'center'}}>
             <img 
               onClick={() => window.open('https://play.google.com/store/apps/details?id=com.statsdraft.app&pcampaignid=web_share', '_blank')}
               src="https://static.wixstatic.com/media/7c6199_1ffc951b203f48adb314cdc5d922a3c7~mv2.png/v1/fill/w_306,h_90,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/googleplay.png" 
