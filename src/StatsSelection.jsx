@@ -111,7 +111,7 @@ const StatsSelection = () => {
         height: '1px',
         backgroundColor: '#000',
         border: 'none',
-        margin: '0 0 20px 0',
+        margin: '0 auto 20px',
       }} />
       
       <div style={{
