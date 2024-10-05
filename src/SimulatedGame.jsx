@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 const SimulatedGame = () => {
@@ -9,6 +9,19 @@ const SimulatedGame = () => {
     '1st Down', '2 PT Conversion', '20+ Yard Passes',
     '3rd Down %', '40+ Yard Passes'
   ];
+
+  const [selectedStats, setSelectedStats] = useState(Array(5).fill(null));
+
+  const handleStatClick = (statIndex) => {
+    if (selectedStats.includes(statIndex)) return; // Prevent selecting the same stat twice
+
+    const nextEmptySlot = selectedStats.findIndex(stat => stat === null);
+    if (nextEmptySlot !== -1) {
+      const newSelectedStats = [...selectedStats];
+      newSelectedStats[nextEmptySlot] = statIndex;
+      setSelectedStats(newSelectedStats);
+    }
+  };
 
   return (
     <div style={{
@@ -50,15 +63,17 @@ const SimulatedGame = () => {
         <h2 style={{ textAlign: 'center', marginBottom: '10px' }}>
           {matchup || 'No matchup selected'}
         </h2>
-        {[1, 2, 3, 4, 5].map((num) => (
-          <div key={num} style={{
+        {selectedStats.map((statIndex, index) => (
+          <div key={index} style={{
             border: '1px solid #ccc',
             borderRadius: '10px',
             padding: '10px',
             marginBottom: '10px',
             textAlign: 'center',
+            backgroundColor: statIndex !== null ? (statIndex % 2 === 0 ? '#e8f5e9' : '#ffebee') : 'white',
+            color: statIndex !== null ? (statIndex % 2 === 0 ? '#2e7d32' : '#c62828') : 'black',
           }}>
-            {num}. --------
+            {index + 1}. {statIndex !== null ? statCategories[Math.floor(statIndex / 2)] : '--------'}
           </div>
         ))}
       </div>
@@ -77,23 +92,35 @@ const SimulatedGame = () => {
         maxWidth: '400px',
       }}>
         {statCategories.flatMap((category, index) => [
-          <div key={`${index}-green`} style={{
-            padding: '10px',
-            marginBottom: '10px',
-            borderRadius: '10px',
-            backgroundColor: '#e8f5e9',
-            color: '#2e7d32',
-          }}>
-            {index * 2 + 1}. {category} (green)
+          <div 
+            key={`${index}-green`} 
+            onClick={() => handleStatClick(index * 2)}
+            style={{
+              padding: '10px',
+              marginBottom: '10px',
+              borderRadius: '10px',
+              backgroundColor: '#e8f5e9',
+              color: '#2e7d32',
+              cursor: 'pointer',
+              opacity: selectedStats.includes(index * 2) ? 0.5 : 1,
+            }}
+          >
+            {index * 2 + 1}. {category}
           </div>,
-          <div key={`${index}-red`} style={{
-            padding: '10px',
-            marginBottom: '10px',
-            borderRadius: '10px',
-            backgroundColor: '#ffebee',
-            color: '#c62828',
-          }}>
-            {index * 2 + 2}. {category} (red)
+          <div 
+            key={`${index}-red`} 
+            onClick={() => handleStatClick(index * 2 + 1)}
+            style={{
+              padding: '10px',
+              marginBottom: '10px',
+              borderRadius: '10px',
+              backgroundColor: '#ffebee',
+              color: '#c62828',
+              cursor: 'pointer',
+              opacity: selectedStats.includes(index * 2 + 1) ? 0.5 : 1,
+            }}
+          >
+            {index * 2 + 2}. {category}
           </div>
         ])}
       </div>
