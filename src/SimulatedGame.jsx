@@ -21,14 +21,14 @@ import {
 } from './scoring_methods/scoring_methods.js';
 
 const gifMapping = {
-  "2019 Chiefs": "./assets/2019chiefs.gif",
-  "2023 Chiefs": "./assets/23chiefs.gif",
-  "1968 KU": "./assets/1968jayhawk.gif",
-  "1995 KU": "./assets/95ku.gif",
-  "2018 Chiefs": "./assets/18chiefs.gif",
-  "2015 Patriots": "./assets/2015pats.gif",
-  "2008 KU": "./assets/2008jayhawk.gif",
-  "1998 KState": "./assets/wildcat.gif",
+  "2019 Chiefs": "../src/assets/2019chiefs.gif",
+  "2023 Chiefs": "../src/assets/23chiefs.gif",
+  "1968 KU": "../src/assets/1968jayhawk.gif",
+  "1995 KU": "../src/assets/95ku.gif",
+  "2018 Chiefs": "../src/assets/18chiefs.gif",
+  "2015 Patriots": "../src/assets/2015pats.gif",
+  "2008 KU": "../src/assets/2008jayhawk.gif",
+  "1998 KState": "../src/assets/wildcat.gif",
 };
 
 const getGifsForTeams = (teamsPlaying) => {
@@ -353,10 +353,9 @@ const SimulatedGame = () => {
         <li>{gameStats.game.teams[0].team_name} score: {gameStats.game.teams[0].score}</li>
         <li>{gameStats.game.teams[1].team_name} score: {gameStats.game.teams[1].score}</li>
       </ul>
-      {/* Display the associated GIFs */}
       <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
         {getGifsForTeams(getPlayerData['Teams Playing']).map((gif, index) => (
-          <img key={index} src={gif} alt={gif} style={{ width: '100px', height: 'auto', margin: '0 10px' }} />
+          <img key={index} src={gif} alt={gif} style={{ width: '150px', height: 'auto', margin: '0 10px' }} />
         ))}
       </div>
       <button 
