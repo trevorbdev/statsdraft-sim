@@ -52,8 +52,8 @@ const AppContent = () => {
               style={{
                 border: '1px solid #ccc',
                 borderRadius: '25px',
-                padding: '15px 20px',
-                marginBottom: '15px',
+                padding: '20px 15px',
+                margin: '10px',
                 textAlign: 'center',
                 fontSize: '16px',
                 boxShadow: '0 2px 4px rgba(0,0,0,0.1)',

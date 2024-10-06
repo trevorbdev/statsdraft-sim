@@ -153,8 +153,6 @@ const SimulatedGame = () => {
       flexDirection: 'column',
       minHeight: '100vh',
       width: '100%',
-      maxWidth: '800px',
-      margin: '0 auto',
       boxSizing: 'border-box',
       backgroundColor: '#f0f0f0',
     }}>
@@ -178,6 +176,8 @@ const SimulatedGame = () => {
               borderRadius: '5px',
               marginRight: '5px',
               cursor: 'pointer',
+              marginLeft: 'auto',
+              alignItems: 'right'
             }}
           >
             Explain my Score
@@ -247,16 +247,16 @@ const SimulatedGame = () => {
               onClick={() => window.open('https://play.google.com/store/apps/details?id=com.statsdraft.app&pcampaignid=web_share', '_blank')}
               src="https://static.wixstatic.com/media/7c6199_1ffc951b203f48adb314cdc5d922a3c7~mv2.png/v1/fill/w_306,h_90,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/googleplay.png" 
               alt="googleplay.png" 
-              style={{width:'185px',height:'60px'}} 
-              width="185" 
+              style={{width:'170px',height:'60px'}} 
+              width="170" 
               height="60"
             />
             <img 
               onClick={() => window.open('https://apps.apple.com/us/app/statsdraft/id6451419726', '_blank')}
               src="https://static.wixstatic.com/media/7c6199_e3b0e86d110f4962b07ae4f5f9089f58~mv2.png/v1/fill/w_303,h_90,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Apple.png" 
               alt="Apple.png" 
-              style={{width:'185px',height:'60px'}} 
-              width="185" 
+              style={{width:'170px',height:'60px', paddingLeft: '8px'}} 
+              width="170" 
               height="60"
             />
           </div>
