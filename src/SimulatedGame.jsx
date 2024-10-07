@@ -6,6 +6,14 @@ import KU68vs95 from './ai-json-data/68KU95KU.json';
 import Chiefs18vsPatriots15 from './ai-json-data/18Chiefs15Patriots.json';
 import KSU98vsKU08 from './ai-json-data/98KSU08KU.json';
 import AppBar from './AppBar';
+import ChiefsGif19Url from '/assets/2019chiefs.gif';
+import ChiefsGif23Url from '/assets/23chiefs.gif';
+import KUGif68Url from '/assets/1968jayhawk.gif';
+import KUGif95Url from '/assets/95ku.gif';
+import ChiefsGif18Url from '/assets/18chiefs.gif';
+import PatsGif15Url from '/assets/2015pats.gif';
+import KUGif08Url from '/assets/2008jayhawk.gif';
+import KSUGifUrl from '/assets/wildcat.gif';
 // Import all the scoring functions
 import {
   totalYardsScoring,
@@ -21,14 +29,14 @@ import {
 } from './scoring_methods/scoring_methods.js';
 
 const gifMapping = {
-  "2019 Chiefs": "../src/assets/2019chiefs.gif",
-  "2023 Chiefs": "../src/assets/23chiefs.gif",
-  "1968 KU": "../src/assets/1968jayhawk.gif",
-  "1995 KU": "../src/assets/95ku.gif",
-  "2018 Chiefs": "../src/assets/18chiefs.gif",
-  "2015 Patriots": "../src/assets/2015pats.gif",
-  "2008 KU": "../src/assets/2008jayhawk.gif",
-  "1998 KState": "../src/assets/wildcat.gif",
+  "2019 Chiefs": ChiefsGif19Url,
+  "2023 Chiefs": ChiefsGif23Url,
+  "1968 KU": KUGif68Url,
+  "1995 KU": KUGif95Url,
+  "2018 Chiefs": ChiefsGif18Url,
+  "2015 Patriots": PatsGif15Url,
+  "2008 KU": KUGif08Url,
+  "1998 KState": KSUGifUrl,
 };
 
 const getGifsForTeams = (teamsPlaying) => {

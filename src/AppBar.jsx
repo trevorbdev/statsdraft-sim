@@ -1,3 +1,5 @@
+import appLogoUrl from '/assets/statsdraftlogo.png';
+
 const AppBar = () => {
   return (
     <div
@@ -10,7 +12,7 @@ const AppBar = () => {
       }}
     >
       <img
-        src="../src/assets/statsdraftlogo.png"
+        src={appLogoUrl}
         width="50"
         height="50"
         style={{ marginTop: "1vh" }}
